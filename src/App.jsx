@@ -54,6 +54,33 @@ const education = [
   },
 ];
 
+const stack = [
+  {
+    category: 'Languages',
+    items: 'Python, JavaScript, TypeScript, C++, Embedded C',
+  },
+  {
+    category: 'Frameworks',
+    items: 'React, Node.js, FastAPI, LiveKit',
+  },
+  {
+    category: 'AI/ML',
+    items: 'TensorFlow, Keras, LangChain, RAG, OpenAI API',
+  },
+  {
+    category: 'Hardware',
+    items: 'ESP32-S3, ESP-IDF',
+  },
+  {
+    category: 'Data/BI',
+    items: 'Power BI, yfinance',
+  },
+  {
+    category: 'Cloud/Tools',
+    items: 'Azure, GitHub, GitHub Copilot, Vite',
+  },
+];
+
 const workExperience = [
   {
     title: 'Software Engineer Intern',
@@ -120,9 +147,11 @@ function App() {
   const scrollRafRef = useRef(0);
   const heroSectionRef = useRef(null);
   const educationSectionRef = useRef(null);
+  const stackSectionRef = useRef(null);
   const experienceSectionRef = useRef(null);
   const leadershipSectionRef = useRef(null);
   const projectsSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -201,11 +230,17 @@ function App() {
             <button type="button" onClick={() => scrollToSection(experienceSectionRef)} className={navLinkClass}>
               Experience
             </button>
-            <button type="button" onClick={() => scrollToSection(leadershipSectionRef)} className={navLinkClass}>
-              Community
+            <button type="button" onClick={() => scrollToSection(stackSectionRef)} className={navLinkClass}>
+              Stack
             </button>
             <button type="button" onClick={() => scrollToSection(projectsSectionRef)} className={navLinkClass}>
               Projects
+            </button>
+            <button type="button" onClick={() => scrollToSection(leadershipSectionRef)} className={navLinkClass}>
+              Community
+            </button>
+            <button type="button" onClick={() => scrollToSection(contactSectionRef)} className={navLinkClass}>
+              Contact
             </button>
           </nav>
         </div>
@@ -385,58 +420,27 @@ function App() {
               <div className="mt-14 h-px w-full bg-[var(--border)]" aria-hidden="true" />
             </section>
 
-            <section ref={leadershipSectionRef}>
+            <section ref={stackSectionRef}>
               <p className={sectionLabelClass}>
-                02 / Leadership
+                02 / Stack
               </p>
               <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
-                People and community stuff I&apos;ve led
+                What I actually build with
               </h2>
+              <p className="mt-2 text-sm text-[var(--muted)]">no buzzword bingo, just what&apos;s in the toolbox</p>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
 
               <div>
-                {withCurrentFirst(leadership).map((item, index) => (
-                  <div key={item.title}>
+                {stack.map((row, index) => (
+                  <div key={row.category}>
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-4 py-11 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
-                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-[15px] font-bold text-[var(--text)]">{item.title}</h3>
-                          {item.status && <span className={badgeClass}>{item.status}</span>}
-                        </div>
-                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-[var(--muted)]">
-                          <span>{item.org}</span>
-                          {item.orgUrl && (
-                            <a
-                              href={item.orgUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="quiet-link"
-                              aria-label={`${item.org} website`}
-                            >
-                              <span aria-hidden="true">↗</span>
-                            </a>
-                          )}
-                        </p>
-                        <p className="mt-2 text-[11px] tracking-[0.1em] text-[var(--muted)] uppercase">
-                          {item.period.replace(/ - /g, ' – ')}
-                        </p>
-                      </div>
-                      <ul className="space-y-2.5 text-[14px] leading-7 text-[var(--muted)]">
-                        {item.bullets.map((bullet) => (
-                          <li key={bullet} className="flex gap-2.5">
-                            <span className="shrink-0 select-none" aria-hidden="true">
-                              –
-                            </span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <article className="grid grid-cols-1 gap-2 py-6 md:grid-cols-[minmax(110px,140px)_1fr] md:gap-x-8 md:items-baseline">
+                      <p className="text-[11px] font-medium tracking-[0.14em] text-[var(--muted)] uppercase">
+                        {row.category}
+                      </p>
+                      <p className="text-[14px] leading-7 text-[var(--text)]">{row.items}</p>
                     </article>
                   </div>
                 ))}
@@ -502,6 +506,112 @@ function App() {
                     </article>
                   </div>
                 ))}
+              </div>
+              <div className="mt-14 h-px w-full bg-[var(--border)]" aria-hidden="true" />
+            </section>
+
+            <section ref={leadershipSectionRef}>
+              <p className={sectionLabelClass}>
+                04 / Leadership
+              </p>
+              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+                People and community stuff I&apos;ve led
+              </h2>
+              <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
+
+              <div>
+                {withCurrentFirst(leadership).map((item, index) => (
+                  <div key={item.title}>
+                    {index > 0 && (
+                      <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
+                    )}
+                    <article className="grid grid-cols-1 gap-4 py-11 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
+                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-[15px] font-bold text-[var(--text)]">{item.title}</h3>
+                          {item.status && <span className={badgeClass}>{item.status}</span>}
+                        </div>
+                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-[var(--muted)]">
+                          <span>{item.org}</span>
+                          {item.orgUrl && (
+                            <a
+                              href={item.orgUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="quiet-link"
+                              aria-label={`${item.org} website`}
+                            >
+                              <span aria-hidden="true">↗</span>
+                            </a>
+                          )}
+                        </p>
+                        <p className="mt-2 text-[11px] tracking-[0.1em] text-[var(--muted)] uppercase">
+                          {item.period.replace(/ - /g, ' – ')}
+                        </p>
+                      </div>
+                      <ul className="space-y-2.5 text-[14px] leading-7 text-[var(--muted)]">
+                        {item.bullets.map((bullet) => (
+                          <li key={bullet} className="flex gap-2.5">
+                            <span className="shrink-0 select-none" aria-hidden="true">
+                              –
+                            </span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-14 h-px w-full bg-[var(--border)]" aria-hidden="true" />
+            </section>
+
+            <section ref={contactSectionRef}>
+              <p className={sectionLabelClass}>
+                05 / Contact
+              </p>
+              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+                Got something worth building?
+              </h2>
+              <p className="mt-2 text-sm text-[var(--muted)]">say hi — no cold-email etiquette required</p>
+              <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
+
+              <a
+                href="mailto:dskohli@connect.ust.hk"
+                className="accent-link mt-10 inline-flex items-center gap-2 font-mono text-lg tracking-[-0.02em] text-[var(--text)] md:text-xl"
+              >
+                dskohli@connect.ust.hk <span aria-hidden="true">↗</span>
+              </a>
+
+              <div className="mt-12 flex flex-col gap-4 border-t border-[var(--border)] pt-8 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--muted)]">
+                  <a
+                    href="https://www.linkedin.com/in/darshbirsingh/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="accent-link inline-flex items-center gap-2"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+                      <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 4.98 3.5ZM3 9h4v12H3V9Zm7 0h3.82v1.64h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.62c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21h-4V9Z" />
+                    </svg>
+                    LinkedIn <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href="https://github.com/darshbir19"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="accent-link inline-flex items-center gap-2"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+                      <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.25c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.2 1.84 1.2 1.08 1.82 2.84 1.29 3.53.99.1-.77.42-1.3.77-1.6-2.67-.3-5.48-1.31-5.48-5.85 0-1.29.47-2.35 1.24-3.18-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.22a11.58 11.58 0 0 1 6.02 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.64.24 2.86.12 3.16.77.83 1.24 1.89 1.24 3.18 0 4.55-2.82 5.54-5.51 5.84.44.37.82 1.09.82 2.21v3.28c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
+                    </svg>
+                    GitHub <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+                <p className="text-sm text-[var(--muted)] sm:text-right">© 2026 Darshbir Singh</p>
               </div>
             </section>
           </div>
