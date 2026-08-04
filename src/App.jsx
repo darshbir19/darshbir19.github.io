@@ -43,12 +43,22 @@ const projects = [
 
 const education = [
   {
-    title: 'Bachelor of Engineering in Computer Engineering',
+    title: (
+      <>
+        Bachelor of Engineering in{' '}
+        <span className="font-medium text-[var(--text)]">Computer Engineering</span>
+      </>
+    ),
     org: 'Hong Kong University of Science and Technology',
     period: 'Sep 2024 - May 2028',
   },
   {
-    title: 'Exchange, Computer Science',
+    title: (
+      <>
+        Exchange,{' '}
+        <span className="font-medium text-[var(--text)]">Computer Science</span>
+      </>
+    ),
     org: 'KTH Royal Institute of Technology',
     period: 'Jan 2027 - May 2027',
   },
@@ -200,10 +210,10 @@ function App() {
   };
 
   const badgeClass =
-    'inline-flex items-center rounded-full bg-[var(--badge-bg)] px-2.5 py-0.5 text-[11px] font-medium text-[var(--badge-text)]';
+    'inline-flex items-center rounded-full bg-[var(--badge-bg)] px-2.5 py-0.5 text-xs font-medium text-[var(--badge-text)]';
 
   const sectionLabelClass =
-    'section-label text-[11px] font-medium tracking-[0.14em] uppercase';
+    'section-label text-xs font-medium tracking-[0.14em] uppercase';
 
   const navLinkClass =
     'text-sm text-[var(--muted)] transition hover:text-[var(--text)]';
@@ -330,26 +340,26 @@ function App() {
               <p className={sectionLabelClass}>
                 00 / Education
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 Where I&apos;m learning it
               </h2>
-              <p className="mt-2 text-sm text-[var(--muted)]">the school part</p>
+              <p className="mt-2 text-base text-[var(--muted)]">the school part</p>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
 
               <div>
                 {education.map((item, index) => (
-                  <div key={item.title}>
+                  <div key={item.org}>
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-3 py-6 md:grid-cols-[50px_1fr] md:gap-x-8">
-                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
+                    <article className="grid grid-cols-1 gap-3 py-7 md:grid-cols-[50px_1fr] md:gap-x-8">
+                      <span className="font-mono text-sm tabular-nums text-[var(--muted)] md:pt-1">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <div>
-                        <h3 className="text-[15px] font-bold text-[var(--text)]">{item.title}</h3>
-                        <p className="mt-1.5 text-sm text-[var(--muted)]">{item.org}</p>
-                        <p className="mt-2 text-[11px] tracking-[0.1em] text-[var(--muted)] uppercase">
+                        <h3 className="text-lg font-bold text-[var(--text)]">{item.org}</h3>
+                        <p className="mt-1.5 text-base text-[var(--muted)]">{item.title}</p>
+                        <p className="mt-2 text-xs tracking-[0.1em] text-[var(--muted)] uppercase">
                           {item.period.replace(/ - /g, ' – ')}
                         </p>
                       </div>
@@ -364,10 +374,10 @@ function App() {
               <p className={sectionLabelClass}>
                 01 / Experience
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 Where I&apos;ve spent my time
               </h2>
-              <p className="mt-2 text-sm text-[var(--muted)]">roles I&apos;ve actually worked through</p>
+              <p className="mt-2 text-base text-[var(--muted)]">roles I&apos;ve actually worked through</p>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
 
               <div>
@@ -376,16 +386,16 @@ function App() {
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-4 py-11 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
-                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
+                    <article className="grid grid-cols-1 gap-4 py-12 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
+                      <span className="font-mono text-sm tabular-nums text-[var(--muted)] md:pt-1">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-[15px] font-bold text-[var(--text)]">{item.title}</h3>
+                          <h3 className="text-lg font-bold text-[var(--text)]">{item.title}</h3>
                           {item.status && <span className={badgeClass}>{item.status}</span>}
                         </div>
-                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-[var(--muted)]">
+                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-base text-[var(--muted)]">
                           <span>{item.org}</span>
                           {item.orgUrl && (
                             <a
@@ -399,11 +409,11 @@ function App() {
                             </a>
                           )}
                         </p>
-                        <p className="mt-2 text-[11px] tracking-[0.1em] text-[var(--muted)] uppercase">
+                        <p className="mt-2 text-xs tracking-[0.1em] text-[var(--muted)] uppercase">
                           {item.period.replace(/ - /g, ' – ')}
                         </p>
                       </div>
-                      <ul className="space-y-2.5 text-[14px] leading-7 text-[var(--muted)]">
+                      <ul className="space-y-2.5 text-base leading-7 text-[var(--muted)]">
                         {item.bullets.map((bullet) => (
                           <li key={bullet} className="flex gap-2.5">
                             <span className="shrink-0 select-none" aria-hidden="true">
@@ -424,10 +434,10 @@ function App() {
               <p className={sectionLabelClass}>
                 02 / Stack
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 What I actually build with
               </h2>
-              <p className="mt-2 text-sm text-[var(--muted)]">no buzzword bingo, just what&apos;s in the toolbox</p>
+              <p className="mt-2 text-base text-[var(--muted)]">no buzzword bingo, just what&apos;s in the toolbox</p>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
 
               <div>
@@ -436,11 +446,11 @@ function App() {
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-2 py-6 md:grid-cols-[minmax(110px,140px)_1fr] md:gap-x-8 md:items-baseline">
-                      <p className="text-[11px] font-medium tracking-[0.14em] text-[var(--muted)] uppercase">
+                    <article className="grid grid-cols-1 gap-2 py-7 md:grid-cols-[minmax(110px,140px)_1fr] md:gap-x-8 md:items-baseline">
+                      <p className="text-xs font-medium tracking-[0.14em] text-[var(--muted)] uppercase">
                         {row.category}
                       </p>
-                      <p className="text-[14px] leading-7 text-[var(--text)]">{row.items}</p>
+                      <p className="text-base leading-7 text-[var(--text)]">{row.items}</p>
                     </article>
                   </div>
                 ))}
@@ -452,7 +462,7 @@ function App() {
               <p className={sectionLabelClass}>
                 03 / Projects
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 Things I&apos;ve built on my own
               </h2>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
@@ -463,14 +473,14 @@ function App() {
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-4 py-11 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
-                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
+                    <article className="grid grid-cols-1 gap-4 py-12 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
+                      <span className="font-mono text-sm tabular-nums text-[var(--muted)] md:pt-1">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <div>
-                        <h3 className="text-[15px] font-bold text-[var(--text)]">{project.name}</h3>
-                        <p className="mt-1.5 text-sm text-[var(--muted)]">{project.stack}</p>
-                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[var(--muted)]">
+                        <h3 className="text-lg font-bold text-[var(--text)]">{project.name}</h3>
+                        <p className="mt-1.5 text-base text-[var(--muted)]">{project.stack}</p>
+                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-[var(--muted)]">
                           {project.liveUrl && (
                             <a
                               href={project.liveUrl}
@@ -493,7 +503,7 @@ function App() {
                           )}
                         </div>
                       </div>
-                      <ul className="space-y-2.5 text-[14px] leading-7 text-[var(--muted)]">
+                      <ul className="space-y-2.5 text-base leading-7 text-[var(--muted)]">
                         {project.bullets.map((bullet) => (
                           <li key={bullet} className="flex gap-2.5">
                             <span className="shrink-0 select-none" aria-hidden="true">
@@ -514,7 +524,7 @@ function App() {
               <p className={sectionLabelClass}>
                 04 / Leadership
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 People and community stuff I&apos;ve led
               </h2>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
@@ -525,16 +535,16 @@ function App() {
                     {index > 0 && (
                       <div className="mx-auto h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
                     )}
-                    <article className="grid grid-cols-1 gap-4 py-11 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
-                      <span className="font-mono text-xs tabular-nums text-[var(--muted)] md:pt-1">
+                    <article className="grid grid-cols-1 gap-4 py-12 md:grid-cols-[50px_minmax(160px,220px)_1fr] md:gap-x-8">
+                      <span className="font-mono text-sm tabular-nums text-[var(--muted)] md:pt-1">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-[15px] font-bold text-[var(--text)]">{item.title}</h3>
+                          <h3 className="text-lg font-bold text-[var(--text)]">{item.title}</h3>
                           {item.status && <span className={badgeClass}>{item.status}</span>}
                         </div>
-                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-[var(--muted)]">
+                        <p className="mt-1.5 inline-flex items-center gap-1.5 text-base text-[var(--muted)]">
                           <span>{item.org}</span>
                           {item.orgUrl && (
                             <a
@@ -548,11 +558,11 @@ function App() {
                             </a>
                           )}
                         </p>
-                        <p className="mt-2 text-[11px] tracking-[0.1em] text-[var(--muted)] uppercase">
+                        <p className="mt-2 text-xs tracking-[0.1em] text-[var(--muted)] uppercase">
                           {item.period.replace(/ - /g, ' – ')}
                         </p>
                       </div>
-                      <ul className="space-y-2.5 text-[14px] leading-7 text-[var(--muted)]">
+                      <ul className="space-y-2.5 text-base leading-7 text-[var(--muted)]">
                         {item.bullets.map((bullet) => (
                           <li key={bullet} className="flex gap-2.5">
                             <span className="shrink-0 select-none" aria-hidden="true">
@@ -573,21 +583,21 @@ function App() {
               <p className={sectionLabelClass}>
                 05 / Contact
               </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-3xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[var(--text)] md:text-4xl">
                 Got something worth building?
               </h2>
-              <p className="mt-2 text-sm text-[var(--muted)]">say hi — no cold-email etiquette required</p>
+              <p className="mt-2 text-base text-[var(--muted)]">say hi — no cold-email etiquette required</p>
               <div className="mx-auto mt-8 h-px w-3/5 bg-[var(--border)]" aria-hidden="true" />
 
               <a
                 href="mailto:dskohli@connect.ust.hk"
-                className="accent-link mt-10 inline-flex items-center gap-2 font-mono text-lg tracking-[-0.02em] text-[var(--text)] md:text-xl"
+                className="accent-link mt-10 inline-flex items-center gap-2 font-mono text-xl tracking-[-0.02em] text-[var(--text)] md:text-2xl"
               >
                 dskohli@connect.ust.hk <span aria-hidden="true">↗</span>
               </a>
 
               <div className="mt-12 flex flex-col gap-4 border-t border-[var(--border)] pt-8 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--muted)]">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-base text-[var(--muted)]">
                   <a
                     href="https://www.linkedin.com/in/darshbirsingh/"
                     target="_blank"
@@ -611,7 +621,7 @@ function App() {
                     GitHub <span aria-hidden="true">↗</span>
                   </a>
                 </div>
-                <p className="text-sm text-[var(--muted)] sm:text-right">© 2026 Darshbir Singh</p>
+                <p className="text-base text-[var(--muted)] sm:text-right">© 2026 Darshbir Singh</p>
               </div>
             </section>
           </div>
