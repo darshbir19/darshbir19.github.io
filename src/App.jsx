@@ -234,14 +234,8 @@ function App() {
             Darshbir Singh
           </button>
           <nav className="flex items-center gap-5">
-            <button type="button" onClick={() => scrollToSection(educationSectionRef)} className={navLinkClass}>
-              Education
-            </button>
             <button type="button" onClick={() => scrollToSection(experienceSectionRef)} className={navLinkClass}>
               Experience
-            </button>
-            <button type="button" onClick={() => scrollToSection(stackSectionRef)} className={navLinkClass}>
-              Stack
             </button>
             <button type="button" onClick={() => scrollToSection(projectsSectionRef)} className={navLinkClass}>
               Projects
